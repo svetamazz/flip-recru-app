@@ -3,11 +3,15 @@ import { BasicPlanet } from '@/lib/models/planet'
 
 interface IProps {
   planet: BasicPlanet
+  hideTitle?: boolean
 }
 
-const PlanetCard = ({ planet }: IProps) => {
+const PlanetCard = ({ planet, hideTitle = false }: IProps) => {
   return (
-    <div className="rounded overflow-hidden transform hover:scale-105 transition-transform duration-200">
+    <div
+      className="rounded overflow-hidden transform hover:scale-105 
+      transition-transform duration-200"
+    >
       <Image
         src={planet.image}
         layout="responsive"
@@ -15,9 +19,11 @@ const PlanetCard = ({ planet }: IProps) => {
         height="300px"
         alt="planet image"
       ></Image>
-      <p className="text-base sm:text-lg font-medium bg-gray-200 bg-opacity-50 p-3 mt-2">
-        {planet.name}
-      </p>
+      {!hideTitle && (
+        <p className="text-base sm:text-lg font-medium bg-gray-200 bg-opacity-50 p-3 mt-2">
+          {planet.name}
+        </p>
+      )}
     </div>
   )
 }
