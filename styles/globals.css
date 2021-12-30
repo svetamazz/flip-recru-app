@@ -11,7 +11,10 @@
   #__next {
     @apply flex flex-col text-white;
   }
-  a {
-    @apply underline;
+}
+
+@layer components {
+  .__app-container {
+    @apply max-w-[1280px] mx-auto my-8 sm:my-10 lg:my-16 px-6 md:px-7 lg:px-10 xl:px-16;
   }
 }
