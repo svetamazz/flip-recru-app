@@ -1,9 +1,9 @@
-import { EnhancedPlanet } from '../models/planet'
+import { EnhancedPlanet, UnhydratedEnhancedPlanet } from '../models/planet'
 
 export function hydratePlanet(
-  x: Omit<EnhancedPlanet, 'id' | 'image'>,
+  x: UnhydratedEnhancedPlanet,
   idx: number
-) {
+): EnhancedPlanet {
   const id = idx + 1
 
   return {

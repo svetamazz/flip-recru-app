@@ -1,6 +1,5 @@
 import type { GetStaticPropsContext } from 'next'
-import { BasicPlanet } from '@/lib/models/planet'
-import { getAllPlanets, getPlanet } from '@/lib/services/planet.service'
+import { getPlanet } from '@/lib/services/planet.service'
 import PlanetPage from '@/components/PlanetPage'
 import { PlanetPageProps } from '@/components/PlanetPage/PlanetPage'
 
@@ -10,22 +9,19 @@ const Planet = (props: PlanetPageProps) => {
 
 export default Planet
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetStaticPropsContext) {
   const planetId = context.params?.id?.toString()
   const planet = await getPlanet(planetId)
+
+  if (!planet) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {
       planet,
     },
-  }
-}
-
-export async function getStaticPaths() {
-  const planets: BasicPlanet[] = await getAllPlanets()
-
-  return {
-    paths: planets.map((x) => ({ params: { id: x.id } })),
-    fallback: false,
   }
 }

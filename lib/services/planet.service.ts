@@ -1,31 +1,42 @@
 import { hydratePlanet } from '../utils'
-import { BasicPlanet, EnhancedPlanet } from '../models/planet'
+import {
+  BasicPlanet,
+  EnhancedPlanet,
+  UnhydratedEnhancedPlanet,
+} from '../models/planet'
 
 const planetsURL = process.env.BASE_URL + 'planets/'
 
-export const getAllPlanets = async (): Promise<BasicPlanet[]> => {
+const initialPlanetsResponse = {
+  planets: [],
+  nextPageUrl: null,
+}
+
+export const getPlanets = async (
+  nextPageUrl?: string,
+  startIdx = 0
+): Promise<{ planets: BasicPlanet[]; nextPageUrl: string | null }> => {
   try {
-    const planets: EnhancedPlanet[] = []
+    const res = initialPlanetsResponse
 
-    let tmp = null
-    let nextPage = planetsURL
+    const data = await fetch(nextPageUrl ?? planetsURL).then((res) =>
+      res.json()
+    )
 
-    while (nextPage) {
-      tmp = await fetch(nextPage).then((res) => res.json())
+    if (data?.results) {
+      res.planets = data.results
+        .map((planet: UnhydratedEnhancedPlanet, idx: number) =>
+          hydratePlanet(planet, idx + startIdx)
+        )
+        .map(({ id, image, name }: EnhancedPlanet) => ({ id, image, name }))
 
-      if (tmp?.results) {
-        planets.push(...tmp.results)
-      }
-
-      nextPage = tmp?.next
+      res.nextPageUrl = data.next
     }
 
-    return planets
-      .map(hydratePlanet)
-      .map(({ id, image, name }) => ({ id, image, name }))
+    return res
   } catch (e) {
     console.error(e)
-    return []
+    return initialPlanetsResponse
   }
 }
 
@@ -37,7 +48,7 @@ export const getPlanet = async (
 
     const data = await fetch(planetsURL + planetId).then((res) => res.json())
 
-    if (!data) return null
+    if (!data || data.detail === 'Not found') return null
 
     return hydratePlanet(data, parseInt(planetId) - 1)
   } catch (e) {
@@ -47,6 +58,6 @@ export const getPlanet = async (
 }
 
 export default {
-  getAllPlanets,
+  getPlanets,
   getPlanet,
 }

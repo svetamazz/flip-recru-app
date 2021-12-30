@@ -1,7 +1,6 @@
 import HomePage from '@/components/Homepage'
 import HomepageProps from '@/components/Homepage/Homepage'
-import { BasicPlanet } from '@/lib/models/planet'
-import { getAllPlanets } from '@/lib/services/planet.service'
+import { getPlanets } from '@/lib/services/planet.service'
 
 const Home = (props: HomepageProps) => {
   return <HomePage {...props} />
@@ -9,12 +8,13 @@ const Home = (props: HomepageProps) => {
 
 export default Home
 
-export async function getStaticProps() {
-  const planets: BasicPlanet[] = await getAllPlanets()
+export async function getServerSideProps() {
+  const { planets, nextPageUrl } = await getPlanets()
 
   return {
     props: {
       planets,
+      nextPageUrl,
     },
   }
 }
