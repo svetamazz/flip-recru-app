@@ -1,10 +1,10 @@
-import type { NextPage, NextPageContext } from 'next'
+import type { NextPage } from 'next'
 import Link from 'next/link'
-import PlanetCard from '@/components/PlanetCard'
-import { BasicPlanet } from '@/lib/models/planet'
-import { getAllPlanets } from '@/lib/services/planet.service'
+import PlanetCard from '../components/PlanetCard'
+import { BasicPlanet } from '../lib/models/planet'
+import { getAllPlanets } from '../lib/services/planet.service'
 
-interface IProps extends NextPageContext {
+interface IProps {
   planets: BasicPlanet[]
 }
 
