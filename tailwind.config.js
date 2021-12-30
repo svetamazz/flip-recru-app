@@ -15,9 +15,9 @@ module.exports = {
       },
       backgroundImage: {
         stars:
-          'url(http://www.script-tutorials.com/demos/360/images/stars.png)',
+          'url(https://www.script-tutorials.com/demos/360/images/stars.png)',
         twinkling:
-          'url(http://www.script-tutorials.com/demos/360/images/twinkling.png)',
+          'url(https://www.script-tutorials.com/demos/360/images/twinkling.png)',
       },
     },
   },
