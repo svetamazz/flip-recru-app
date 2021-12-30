@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import { BasicPlanet } from '../../lib/models/planet'
+import { BasicPlanet } from '@/lib/models/planet'
 
-interface IProps {
+interface PlanetCardProps {
   planet: BasicPlanet
   hideTitle?: boolean
 }
 
-const PlanetCard = ({ planet, hideTitle = false }: IProps) => {
+const PlanetCard = ({ planet, hideTitle = false }: PlanetCardProps) => {
   return (
     <div
       className="rounded overflow-hidden transform hover:scale-105 
@@ -17,10 +17,13 @@ const PlanetCard = ({ planet, hideTitle = false }: IProps) => {
         layout="responsive"
         width="300px"
         height="300px"
-        alt="planet image"
+        alt={planet.name}
       ></Image>
       {!hideTitle && (
-        <p className="text-base sm:text-lg font-medium bg-gray-200 bg-opacity-50 p-3 mt-2">
+        <p
+          className="text-base text-black sm:text-lg font-semibold bg-white
+          bg-opacity-80 p-3 mt-2"
+        >
           {planet.name}
         </p>
       )}

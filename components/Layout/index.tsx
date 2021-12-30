@@ -3,11 +3,11 @@ import Background from './components/Background'
 import Footer from './components/Footer'
 import Nav from './components/Nav'
 
-interface IProps {
+interface LayoutProps {
   children: ReactNode
 }
 
-const Layout = ({ children }: IProps) => (
+const Layout = ({ children }: LayoutProps) => (
   <>
     <Background />
     <div className="flex-grow flex-shrink-0">

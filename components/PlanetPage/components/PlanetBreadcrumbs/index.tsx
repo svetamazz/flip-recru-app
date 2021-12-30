@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
-interface IProps {
+interface PlanetBreadcrumbsProps {
   planetName: string
 }
 
-const PlanetBreadcrumbs = ({ planetName }: IProps) => {
+const PlanetBreadcrumbs = ({ planetName }: PlanetBreadcrumbsProps) => {
   return (
     <div className="text-lg sm:text-xl tracking-[5px] sm:tracking-[12px]">
       <Link href="/" passHref>

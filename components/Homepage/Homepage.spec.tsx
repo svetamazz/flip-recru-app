@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
-import App from '../pages/index'
+import HomePage from './index'
 
-describe('App', () => {
+describe('HomePage', () => {
   it('renders without crashing', () => {
-    render(<App planets={[]} />)
+    render(<HomePage planets={[]} />)
     expect(screen.getByRole('heading', { name: 'Planets' })).toBeInTheDocument()
   })
 
@@ -16,7 +16,7 @@ describe('App', () => {
       },
     ]
 
-    render(<App planets={planets} />)
+    render(<HomePage planets={planets} />)
     expect(screen.getByText(planets[0].name)).toBeInTheDocument()
   })
 
@@ -29,7 +29,7 @@ describe('App', () => {
       },
     ]
 
-    render(<App planets={planets} />)
-    expect(screen.getByAltText('planet image')).toBeInTheDocument()
+    render(<HomePage planets={planets} />)
+    expect(screen.getByAltText(planets[0].name)).toBeInTheDocument()
   })
 })

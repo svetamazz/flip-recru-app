@@ -4,9 +4,11 @@ export function hydratePlanet(
   x: Omit<EnhancedPlanet, 'id' | 'image'>,
   idx: number
 ) {
+  const id = idx + 1
+
   return {
     ...x,
-    id: (idx + 1).toString(),
-    image: `/assets/planet-${(idx + 1) % 2 ? '1' : '2'}.jpeg`,
+    id: id.toString(),
+    image: `/assets/planet-${id % 2}.jpeg`,
   }
 }

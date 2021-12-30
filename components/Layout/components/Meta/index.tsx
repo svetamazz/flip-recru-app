@@ -11,13 +11,13 @@ export interface IMetaData {
 }
 
 const Meta = ({
-  title,
-  description,
+  title = 'Star Wars Planets 🚀',
+  description = 'Navigate through Star Wars Planets with our Navigation System!',
+  ogType = 'website',
+  image = 'assets/default-meta.jpeg',
   ogTitle,
   ogDescription,
   canonical,
-  ogType,
-  image,
 }: IMetaData) => {
   return (
     <Head>
@@ -39,14 +39,6 @@ const Meta = ({
       <link rel="apple-touch-icon" href="/favicon.ico" />
     </Head>
   )
-}
-
-Meta.defaultProps = {
-  title: 'Star Wars Planets 🚀',
-  description:
-    'Navigate through Star Wars Planets with our Navigation System 🚀',
-  ogType: 'website',
-  image: process.env.NEXT_PUBLIC_WEBSITE_URL + 'assets/default-meta.jpeg',
 }
 
 export default Meta

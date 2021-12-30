@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import Planet from '../pages/planet/[id]'
+import PlanetPage from './index'
 
 describe('App', () => {
   it('renders planet card component name', () => {
@@ -16,9 +16,11 @@ describe('App', () => {
       terrain: '',
     }
 
-    render(<Planet planet={planet} />)
+    render(<PlanetPage planet={planet} />)
     expect(
       screen.getByRole('heading', { name: planet.name })
     ).toBeInTheDocument()
+
+    expect(screen.queryByText('Climate:')).toBeNull()
   })
 })

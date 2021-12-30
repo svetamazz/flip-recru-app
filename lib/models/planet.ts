@@ -1,17 +1,17 @@
 export interface BasicPlanet {
-  id: string
-  name: string
-  image: string
+  readonly id: string
+  readonly name: string
+  readonly image: string
 }
 
 export interface EnhancedPlanet extends BasicPlanet {
-  climate: string
-  gravity: string
-  orbital_period: number
-  population: number
-  rotation_period: number
-  surface_water: string
-  terrain: string
-  residents?: string[]
-  films?: string[]
+  readonly climate: string
+  readonly gravity: string
+  readonly orbital_period: number
+  readonly population: number
+  readonly rotation_period: number
+  readonly surface_water: string
+  readonly terrain: string
+  readonly residents?: string[]
+  readonly films?: string[]
 }

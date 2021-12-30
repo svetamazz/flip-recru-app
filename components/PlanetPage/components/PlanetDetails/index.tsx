@@ -1,13 +1,13 @@
-import { EnhancedPlanet } from '../../lib/models/planet'
+import { EnhancedPlanet } from '@/lib/models/planet'
 
-interface IProps {
+interface PlanetDetailsProps {
   planet: EnhancedPlanet
 }
 
-const PlanetDetails = ({ planet }: IProps) => {
+const PlanetDetails = ({ planet }: PlanetDetailsProps) => {
   return (
     <div
-      className="ml-6 bg-white text-black opacity-80 rounded p-5 lg:p-8 w-full 
+      className="ml-6 bg-white text-black bg-opacity-80 rounded p-5 lg:p-8 w-full 
         text-base sm:text-lg mt-4 sm:mt-0"
     >
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium mb-3 sm:mb-4">
