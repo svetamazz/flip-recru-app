@@ -46,7 +46,7 @@ Meta.defaultProps = {
   description:
     'Navigate through Star Wars Planets with our Navigation System 🚀',
   ogType: 'website',
-  image: 'https://flip-test-star-wars.vercel.app/assets/default-meta.jpeg',
+  image: process.env.NEXT_PUBLIC_WEBSITE_URL + 'assets/default-meta.jpeg',
 }
 
 export default Meta
