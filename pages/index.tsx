@@ -1,5 +1,5 @@
 import HomePage from '@/components/Homepage'
-import HomepageProps from '@/components/Homepage/Homepage'
+import { HomepageProps } from '@/components/Homepage/types'
 import { getPlanets } from '@/lib/services/planet.service'
 
 const Home = (props: HomepageProps) => {

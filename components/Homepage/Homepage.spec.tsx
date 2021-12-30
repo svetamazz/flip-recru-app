@@ -3,7 +3,7 @@ import HomePage from './index'
 
 describe('HomePage', () => {
   it('renders without crashing', () => {
-    render(<HomePage planets={[]} />)
+    render(<HomePage planets={[]} nextPageUrl={null} />)
     expect(screen.getByRole('heading', { name: 'Planets' })).toBeInTheDocument()
   })
 
@@ -16,7 +16,7 @@ describe('HomePage', () => {
       },
     ]
 
-    render(<HomePage planets={planets} />)
+    render(<HomePage planets={planets} nextPageUrl={null} />)
     expect(screen.getByText(planets[0].name)).toBeInTheDocument()
   })
 
@@ -29,7 +29,7 @@ describe('HomePage', () => {
       },
     ]
 
-    render(<HomePage planets={planets} />)
+    render(<HomePage planets={planets} nextPageUrl={null} />)
     expect(screen.getByAltText(planets[0].name)).toBeInTheDocument()
   })
 })

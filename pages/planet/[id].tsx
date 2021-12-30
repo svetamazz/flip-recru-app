@@ -1,7 +1,7 @@
 import type { GetStaticPropsContext } from 'next'
 import { getPlanet } from '@/lib/services/planet.service'
 import PlanetPage from '@/components/PlanetPage'
-import { PlanetPageProps } from '@/components/PlanetPage/PlanetPage'
+import { PlanetPageProps } from '@/components/PlanetPage/types'
 
 const Planet = (props: PlanetPageProps) => {
   return <PlanetPage {...props} />

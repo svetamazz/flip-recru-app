@@ -1,27 +1,12 @@
 import Link from 'next/link'
 import Meta from '../Layout/components/Meta'
 import PlanetCard from '../shared/PlanetCard'
-import HomepageProps from './Homepage'
+import { HomepageProps } from './types'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { useState } from 'react'
-import { BasicPlanet } from '@/lib/models/planet'
-import { getPlanets } from '@/lib/services/planet.service'
+import useHomePage from './Homepage.hook'
 
-const HomePage = ({ planets: initialPlanets, nextPageUrl }: HomepageProps) => {
-  const [planets, setPlanets] = useState<BasicPlanet[]>(initialPlanets)
-  const [next, setNext] = useState<string | null>(nextPageUrl)
-
-  const fetchData = async () => {
-    if (next) {
-      const data = await getPlanets(next, planets.length)
-
-      if (data.planets) {
-        setPlanets((prevValues) => [...prevValues, ...data.planets])
-      }
-
-      setNext(data.nextPageUrl)
-    }
-  }
+const HomePage = (props: HomepageProps) => {
+  const { planets, hasMore, fetchData } = useHomePage(props)
 
   return (
     <>
@@ -36,7 +21,7 @@ const HomePage = ({ planets: initialPlanets, nextPageUrl }: HomepageProps) => {
         <InfiniteScroll
           dataLength={planets.length}
           next={fetchData}
-          hasMore={!!next}
+          hasMore={hasMore}
           loader={<h4>Loading...</h4>}
         >
           <div

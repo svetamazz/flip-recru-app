@@ -7,36 +7,38 @@ import {
 
 const planetsURL = process.env.BASE_URL + 'planets/'
 
-const initialPlanetsResponse = {
-  planets: [],
-  nextPageUrl: null,
-}
-
 export const getPlanets = async (
   nextPageUrl?: string,
   startIdx = 0
 ): Promise<{ planets: BasicPlanet[]; nextPageUrl: string | null }> => {
   try {
-    const res = initialPlanetsResponse
-
     const data = await fetch(nextPageUrl ?? planetsURL).then((res) =>
       res.json()
     )
 
     if (data?.results) {
-      res.planets = data.results
-        .map((planet: UnhydratedEnhancedPlanet, idx: number) =>
-          hydratePlanet(planet, idx + startIdx)
-        )
-        .map(({ id, image, name }: EnhancedPlanet) => ({ id, image, name }))
+      return {
+        planets: data.results.map(
+          (planet: UnhydratedEnhancedPlanet, idx: number) => {
+            const { id, image, name } = hydratePlanet(planet, idx + startIdx)
 
-      res.nextPageUrl = data.next
+            return { id, image, name }
+          }
+        ),
+        nextPageUrl: data.next,
+      }
     }
 
-    return res
+    return {
+      planets: [],
+      nextPageUrl: null,
+    }
   } catch (e) {
     console.error(e)
-    return initialPlanetsResponse
+    return {
+      planets: [],
+      nextPageUrl: null,
+    }
   }
 }
 

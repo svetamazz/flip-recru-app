@@ -2,7 +2,7 @@ import Meta from '../Layout/components/Meta'
 import PlanetCard from '../shared/PlanetCard'
 import PlanetBreadcrumbs from './components/PlanetBreadcrumbs'
 import PlanetDetails from './components/PlanetDetails'
-import { PlanetPageProps } from './PlanetPage'
+import { PlanetPageProps } from './types'
 
 const PlanetPage = ({ planet }: PlanetPageProps) => {
   return (

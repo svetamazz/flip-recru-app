@@ -1,5 +1,5 @@
 import { EnhancedPlanet } from '@/lib/models/planet'
 
-interface PlanetPageProps {
+export interface PlanetPageProps {
   planet: EnhancedPlanet
 }
