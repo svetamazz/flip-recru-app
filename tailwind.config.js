@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   mode: 'jit',
   content: [
@@ -6,6 +8,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Rajdhani', ...defaultTheme.fontFamily.sans],
+        serif: ['Rajdhani', ...defaultTheme.fontFamily.serif],
+        mono: ['Rajdhani', ...defaultTheme.fontFamily.mono],
+      },
       backgroundImage: {
         stars:
           'url(http://www.script-tutorials.com/demos/360/images/stars.png)',
