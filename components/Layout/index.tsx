@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import Background from './components/Background'
 import Footer from './components/Footer'
-import Meta from './components/Meta'
 import Nav from './components/Nav'
 
 interface IProps {
@@ -10,7 +9,6 @@ interface IProps {
 
 const Layout = ({ children }: IProps) => (
   <>
-    <Meta />
     <Background />
     <div className="flex-grow flex-shrink-0">
       <Nav />
