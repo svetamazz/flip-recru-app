@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { BasicPlanet } from '@/lib/models/planet'
+import { BasicPlanet } from '../../lib/models/planet'
 
 interface IProps {
   planet: BasicPlanet

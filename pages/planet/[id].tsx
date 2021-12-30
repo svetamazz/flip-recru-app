@@ -1,12 +1,12 @@
-import type { GetStaticPropsContext, NextPage, NextPageContext } from 'next'
-import { BasicPlanet, EnhancedPlanet } from '@/lib/models/planet'
-import { getAllPlanets, getPlanet } from '@/lib/services/planet.service'
-import PlanetBreadcrumbs from '@/components/PlanetBreadcrumbs'
-import Meta from '@/components/Layout/components/Meta'
-import PlanetCard from '@/components/PlanetCard'
-import PlanetDetails from '@/components/PlanetDetails'
+import type { GetStaticPropsContext, NextPage } from 'next'
+import { BasicPlanet, EnhancedPlanet } from '../../lib/models/planet'
+import { getAllPlanets, getPlanet } from '../../lib/services/planet.service'
+import PlanetBreadcrumbs from '../../components/PlanetBreadcrumbs'
+import Meta from '../../components/Layout/components/Meta'
+import PlanetCard from '../../components/PlanetCard'
+import PlanetDetails from '../../components/PlanetDetails'
 
-interface IProps extends NextPageContext {
+interface IProps {
   planet: EnhancedPlanet
 }
 

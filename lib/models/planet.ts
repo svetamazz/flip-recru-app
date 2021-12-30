@@ -12,6 +12,6 @@ export interface EnhancedPlanet extends BasicPlanet {
   rotation_period: number
   surface_water: string
   terrain: string
-  residents: string[]
-  films: string[]
+  residents?: string[]
+  films?: string[]
 }

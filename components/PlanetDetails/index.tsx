@@ -1,4 +1,4 @@
-import { EnhancedPlanet } from '@/lib/models/planet'
+import { EnhancedPlanet } from '../../lib/models/planet'
 
 interface IProps {
   planet: EnhancedPlanet
